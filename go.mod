@@ -1,4 +1,4 @@
-module github.com/paxthemax/consignment-demo/srv/consignment
+module github.com/paxthemax/consignment
 
 go 1.12
 
