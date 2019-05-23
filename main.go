@@ -5,7 +5,7 @@ import (
 	"log"
 
 	micro "github.com/micro/go-micro"
-	pb "github.com/paxthemax/consignment-demo/srv/consignment/proto"
+	pb "github.com/paxthemax/consignment-demo-svc/proto"
 )
 
 type consignmentRepository struct {
