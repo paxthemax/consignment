@@ -1,6 +1,7 @@
 # Makefile
 #
 # Author: Pavle Batuta (pavle.batuta@protonmail.com)
+# Description: Makefile for standalone and docker build and run of the service.
 
 ########################
 # PARAMETERS:
@@ -8,22 +9,24 @@
 
 # General parameters:
 NAME=consignment
-SERVICE_NAME=$(NAME)-svc
 
-# Go parameters:
+# Golang:
 GOCMD=go
 GOBUILD=$(GOCMD) build
 GOCLEAN=$(GOCMD) clean
 GOTEST=$(GOCMD) test
-GOGET=$(GOCMD) get
+
+# Go mod:
+GOMOD=$(GOCMD) mod
 
 # Targets:
+SERVICE_NAME=$(NAME)-svc
 BIN_PATH=bin/$(NAME)
 
-# System parameters:
+# System:
 RM_CMD=rm -f
 
-# Protobuf parameters
+# Protobuf:
 PROTO_DEFINITION_PATH=proto/$(NAME).proto
 PROTO_TARGET_PATH=proto/$(NAME).pb.go
 
@@ -91,4 +94,9 @@ clean: clean-bin
 # Clean ALL:
 .PHONY: clean-ALL
 clean-all: clean-bin proto-clean
+
+# Fetch deps:
+.PHONY: deps
+deps:
+	$(GOMOD) download && $(GOMOD) tidy
 
